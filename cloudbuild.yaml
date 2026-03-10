@@ -1,0 +1,14 @@
+steps:
+# Build the Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '-t'
+  - 'us-central1-docker.pkg.dev/cloudops-489209/ammar-repo/ammar-apache:latest'
+  - '.'
+  id: 'build'
+
+# Push the image to Artifact Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/cloudops-489209/ammar-repo/ammar-apache:latest']
+  id: 'push'
